@@ -29,9 +29,22 @@
         document.querySelector('.mobile-menu-button').addEventListener('click', toggleMobileMenu);
     };
     
+    var setCopyrights = function() {
+        var xhr = new XMLHttpRequest();
+        xhr.addEventListener('readystatechange', function() {
+            if(this.readyState == 4 && this.status == 200) {
+                var responseObject = JSON.parse(this.responseText);
+                document.querySelector(".copyrights").innerHTML = '&copy; ' + responseObject.year + '. All rights reserved.';
+            }
+        });
+        xhr.open('GET', 'api/date.php', true);
+        xhr.send();
+    };
+    
     var onLoad = function() {
         setHomeTopHeight();
         attachListeners();
+        setCopyrights();
     };
     
     window.addEventListener('load', onLoad);
