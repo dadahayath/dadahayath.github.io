@@ -1,4 +1,4 @@
-(function() {
+(function(window, document) {
     
     var setHomeTopHeight = function() {
         var homeTop = document.querySelector('.home-top');
@@ -49,4 +49,4 @@
     
     window.addEventListener('load', onLoad);
     
-}());
+}(window, document));

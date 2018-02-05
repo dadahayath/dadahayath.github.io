@@ -318,6 +318,7 @@ h4 {
 }
 .contact-form-wrap {
     margin: 20px auto;
+    position: relative;
 }
 .form-input {
     width: 100%;
@@ -449,6 +450,86 @@ h4 {
 }
 .testimonial p {
     line-height: 24px;
+}
+.loading-section {
+    background-image: url(../images/loading.svg);
+    background-repeat: no-repeat;
+    background-color: rgba(255, 255, 255, 0.6);
+    background-size: 100px;
+    background-position: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.form-success, .form-failure {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 80%;
+    height: 100%;
+    padding: 0 10%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 0.6);
+}
+.form-success i, .form-failure i {
+    background-size: cover;
+    min-width: 40px;
+    min-height: 40px;
+    float: left;
+    margin-right: 10px;
+}
+.form-success i {
+    background-image: url('../images/tick-inside-circle.png');
+}
+.form-failure i {
+    background-image: url('../images/error.png');
+}
+.form-success span, .form-failure span {
+    line-height: 40px;
+    font-size: 30px;
+    float: left;
+}
+
+/* ADP Styles */
+/* Fade Start */
+@keyframes fade-adp-show {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes fade-adp-hide {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+.fade-adp-show, .fade-adp-hide {
+    animation-duration: 0.5s;
+    animation-fill-mode: both;
+    animation-timing-function: ease;
+}
+
+.fade-adp-show {
+    animation-name: fade-adp-show;
+}
+
+.fade-adp-hide {
+    animation-name: fade-adp-hide;
+}
+/* Fade End */
+.adp-hide {
+    display: none !important;
 }
 
 @media (max-width: 1024px) {
@@ -582,6 +663,17 @@ h4 {
     }
     .map-wrapper {
         height: 300px;
+    }
+    .loading-section {
+        background-size: 50px;
+    }
+    .form-success i, .form-failure i {
+        min-width: 30px;
+        min-height: 30px;
+    }
+    .form-success span, .form-failure span {
+        line-height: 30px;
+        font-size: 24px;
     }
 }
 

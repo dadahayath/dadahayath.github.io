@@ -9,9 +9,24 @@ var Validation = (function () {
         return re.test(String(email).toLowerCase());
     }
     
+    var isValid = function (value, config) {
+        var valid = true;
+        
+        if(config.empty && isEmpty(value)) {
+            valid = false;
+        }
+        
+        if(config.email && !isValidEmail(value)) {
+            valid = false;
+        }
+        
+        return valid;
+    };
+    
     return {
         isEmpty: isEmpty,
-        isValidEmail: isValidEmail
+        isValidEmail: isValidEmail,
+        isValid: isValid
     };
     
 }());

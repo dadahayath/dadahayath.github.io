@@ -53,7 +53,7 @@
             <div class="get-in-touch">
                 <h3>Get in touch</h3>
                 <div class="contact-form-wrap">
-                    <form action="" method="POST">
+                    <form>
                         <div class="form-input">
                             <label>Name:</label>
                             <input id="name-field" type="text" name="name">
@@ -61,19 +61,27 @@
                         </div>
                         <div class="form-input">
                             <label>Email: </label>
-                            <input type="email" name="email">
+                            <input id="email-field" type="email" name="email">
                             <span class="error-message">Enter a valid email id.</span>
                         </div>
                         <div class="form-input">
                             <label>Message:</label>
-                            <textarea name="message"></textarea>
+                            <textarea id="message-field" name="message"></textarea>
                             <span class="error-message">Enter your message.</span>
                         </div>
                         <div class="form-buttons-wrap">
-                            <button type="button" class="button-1 send-button">Send</button>
+                            <button id="submit-button" type="button" class="button-1 send-button">Send</button>
                             <input type="reset" value="Reset" class="button-3">
                         </div>
                     </form>
+                    <div class="form-success adp-hide">
+                        <i></i>
+                        <span>Message sent successfully.</span>
+                    </div>
+                    <div class="form-failure adp-hide">
+                        <i></i>
+                        <span>Something went wrong. Please try again later.</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -82,6 +90,7 @@
             <div class="footer-logo"></div>
             <div class="copyrights">&copy; 2018. All rights reserved.</div>
         </div>
+        <script type="text/javascript" src="js/adp.js"></script>
         <script type="text/javascript" src="js/script.js"></script>
         <script type="text/javascript">
             function initMap() {
@@ -101,37 +110,6 @@
         </script>
         <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCcsNLSekwL8B7tlHXsiWHaGDQKzMjT_Zg&callback=initMap"></script>
         <script type="text/javascript" src="js/validation.js"></script>
-        <script type="text/javascript">
-            var findAncestor = function (element, className) {
-                while ((element = element.parentElement) && !element.classList.contains(className));
-                return element;
-            }
-            
-            var showError = function(element) {
-                var formInput = findAncestor(element, 'form-input');
-                formInput.classList.add('error');
-            };
-            
-            var hideError = function (element) {
-                var formInput = findAncestor(element, 'form-input');
-                formInput.classList.remove('error');
-            };
-            
-            var validate = function (element) {
-                if(Validation.isEmpty(element.value)) {
-                    showError(element);
-                } else {
-                    hideError(element);
-                }
-            };
-            
-            document.getElementById('name-field').addEventListener('blur', function (e) {
-                validate(e.currentTarget);
-            });
-            
-            document.getElementById('name-field').addEventListener('keyup', function (e) {
-                validate(e.currentTarget);
-            });
-        </script>
+        <script type="text/javascript" src="js/form.js"></script>
     </body>
 </html>
