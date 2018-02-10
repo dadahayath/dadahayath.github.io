@@ -61,8 +61,9 @@
         var name = document.getElementById('name-field').value;
         var email = document.getElementById('email-field').value;
         var message = document.getElementById('message-field').value;
+        var captcha = grecaptcha.getResponse();
         
-        return 'name=' + name + '&email=' + email + '&message=' + message;
+        return 'name=' + name + '&email=' + email + '&message=' + message + '&captcha=' + captcha;
     };
     
     var showLoadingIcon = function () {

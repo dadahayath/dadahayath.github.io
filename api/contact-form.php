@@ -4,7 +4,21 @@
     $email = filter_input(INPUT_POST, 'email');
     $message = filter_input(INPUT_POST, 'message');
     
-    if(empty($name) || empty($email) || empty($message) || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    function captchaValid() {
+        $secret = '6LdOkUUUAAAAANq8Y5kJPoR3n6Hs8L5tRoaHJjTO';
+        $response = filter_input(INPUT_POST, 'captcha');
+        $userIp = $_SERVER['REMOTE_ADDR'];
+        $url = 'https://www.google.com/recaptcha/api/siteverify?secret=' . $secret . '&response=' . $response . '&remoteip=' . $userIp;
+        $captchaResponse = file_get_contents($url);
+        $captchaResponse = json_decode($captchaResponse);
+        if($captchaResponse->success) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    
+    if(!captchaValid() || empty($name) || empty($email) || empty($message) || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
         echo json_encode(array('status' => 'error'));
     } else {
         $toemail = 'dada_hayath11@yahoo.com';
